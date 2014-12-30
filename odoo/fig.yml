@@ -1,0 +1,34 @@
+# TODO fix samba issue
+# samba:
+#   image: svendowideit/samba
+#   volumes:
+#     - $(which docker):/docker
+#     - /var/run/docker.sock:/docker.sock
+#   command: odoo_odoo8_1
+
+db:
+  image: xcgd/postgresql
+  volumes_from:
+    - odooinit_dbDATA_1
+
+o8:
+  image: xcgd/odoo:8.0
+  links:
+    - "db"
+  volumes_from:
+    - odooinit_odoo8DATA_1
+  ports:
+    - "8069:8069"
+    - "8072:8072"
+  command: "start"
+
+olatest:
+  image: xcgd/odoo:latest
+  links:
+    - "db"
+  volumes_from:
+    - odooinit_odoolatestDATA_1
+  ports:
+    - "9069:8069"
+    - "9072:8072"
+  command: "start"

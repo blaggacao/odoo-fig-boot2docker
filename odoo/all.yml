@@ -1,0 +1,22 @@
+# Installs two databases with all respective modules installed
+odoo8:
+  image: xcgd/odoo:8.0
+  links:
+    - "db"
+  volumes_from:
+    - odoo8DATA
+  ports:
+    - "8069:8069"
+    - "8072:8072"
+  command: "start -i ALL -d v8-playground --db-template template1 --stop-after-init"
+
+odoolatest:
+  image: xcgd/odoo:latest
+  links:
+    - "db"
+  volumes_from:
+    - odoolatestDATA
+  ports:
+    - "9069:8069"
+    - "9072:8072"
+  command: "start -i ALL -d v9-playground --db-template template1 --stop-after-init"

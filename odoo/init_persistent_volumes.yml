@@ -1,0 +1,26 @@
+dbDATA:
+  image: xcgd/postgresql
+  volumes:
+    - /var/lib/postgresql
+    - /var/log/postgresql
+    - /etc/postgresql
+  entrypoint: /dev/null
+  command: false
+
+odoo8DATA:
+  image: xcgd/odoo:8.0
+  volumes:
+   - /opt/odoo/etc
+   - /opt/odoo/additionnal_addons
+   - /opt/odoo/data
+  entrypoint: /dev/null
+  command: false
+
+odoolatestDATA:
+  image: xcgd/odoo:latest
+  volumes:
+   - /opt/odoo/etc
+   - /opt/odoo/additionnal_addons
+   - /opt/odoo/data
+  entrypoint: /dev/null
+  command: false
