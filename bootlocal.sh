@@ -42,3 +42,6 @@ echo 'alias odoostart='"'"'cd ~/odoo && fig -f fig.yml -p odoo up -d  && cd -'"'
      >> /home/docker/.ashrc
 
 # put other system startup commands here
+
+mkdir ~/hostfiles
+# sudo mount -t cifs //[YOURHOSTPC]/[yoursharedfolder] ~/hostfiles -o user=Guest,nounix,sec=ntlmssp,noperm,rw

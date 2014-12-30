@@ -4,7 +4,7 @@
 #   volumes:
 #     - $(which docker):/docker
 #     - /var/run/docker.sock:/docker.sock
-#   command: odoo_odoo8_1
+#   command: odoo_o8_1
 
 db:
   image: xcgd/postgresql
