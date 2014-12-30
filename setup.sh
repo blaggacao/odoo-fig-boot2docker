@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sudo -s
-cp ./bootlocal.sh /var/lib/boot2docker/
-cp -r ./odoo /var/lib/docker/
-reboot
+
+sudo cp ./bootlocal.sh /var/lib/boot2docker/
+sudo cp -r ./odoo /var/lib/docker/
+sudo reboot
