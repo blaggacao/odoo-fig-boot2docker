@@ -21,6 +21,7 @@ What technology does it use?
 - Boot2Docker : LXC is only available on up-to-date linux kernels, Windows NOT, boot2docker is an special purpose very Tiny Core Linux ISO, you woudl mount in a virtual machine, for ease of use, use the boot2docker-cli to get out of the way the hassle of cofiguring your VM-Environment (does not support Hyper-V yet)
 - Fig : Fig is docker orchestration via yaml fiels developped by the docker team (similar to what ansible or google kybernates does)
 - CIFS / NFS : can be used for folder sharing, this is usfeul to get your sourcode onto the dockers. (see usage)
+- Advanced Odoo-Docker-Images from xcgd - btw postgresql is containerized and completely black boxed, but persistent
 
 Environment
 ====================
