@@ -4,7 +4,7 @@ dbDATA:
     - /var/lib/postgresql
     - /var/log/postgresql
     - /etc/postgresql
-  entrypoint: /dev/null
+  entrypoint: false
   command: false
 
 odoo8DATA:
@@ -13,7 +13,7 @@ odoo8DATA:
    - /opt/odoo/etc
    - /opt/odoo/additionnal_addons
    - /opt/odoo/data
-  entrypoint: /dev/null
+  entrypoint: false
   command: false
 
 odoolatestDATA:
@@ -22,5 +22,5 @@ odoolatestDATA:
    - /opt/odoo/etc
    - /opt/odoo/additionnal_addons
    - /opt/odoo/data
-  entrypoint: /dev/null
+  entrypoint: false
   command: false

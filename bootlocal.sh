@@ -32,13 +32,14 @@ echo 'alias dockerclean='"'"'dockercleanc || true && dockercleani'"'" \
 #Initialize Odoo Consistency volumes
 echo 'alias odooinit='"'"'cd ~/odoo && fig \
 -f init_persistent_volumes.yml \
--p odooinit up -d || true && \
-fig -f init_persistent_volumes.yml \
--p odooinit rm --force && cd -'"'" \
+-p odooinit up -d || true && cd -'"'" \
      >> /home/docker/.ashrc
 
 #Start Odoo Services as defined in fig
-echo 'alias odoostart='"'"'cd ~/odoo && fig -f fig.yml -p odoo up -d  && cd -'"'" \
+echo 'alias odoostart='"'"'cd ~/odoo && \
+fig -f fig.yml -p odoo up -d  && \
+fig -f init_persistent_volumes.yml \
+-p odooinit rm --force&& cd -'"'" \
      >> /home/docker/.ashrc
 
 # put other system startup commands here
