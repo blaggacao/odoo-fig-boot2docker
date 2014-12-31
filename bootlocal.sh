@@ -38,8 +38,7 @@ echo 'alias odooinit='"'"'cd ~/odoo && fig \
 #Start Odoo Services as defined in fig
 echo 'alias odoostart='"'"'cd ~/odoo && \
 fig -f fig.yml -p odoo up -d  && \
-fig -f init_persistent_volumes.yml \
--p odooinit rm --force&& cd -'"'" \
+fig ps'"'" \
      >> /home/docker/.ashrc
 
 # put other system startup commands here
