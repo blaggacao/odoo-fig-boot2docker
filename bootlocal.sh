@@ -44,5 +44,5 @@ fig -f init_persistent_volumes.yml \
 
 # put other system startup commands here
 
-mkdir ~/hostfiles
-# sudo mount -t cifs //[YOURHOSTPC]/[yoursharedfolder] ~/hostfiles -o user=Guest,nounix,sec=ntlmssp,noperm,rw
+mkdir /home/docker/hostfiles
+# sudo mount -t cifs //[YOURHOSTPC]/[yoursharedfolder] /home/docker/hostfiles -o user=Guest,nounix,sec=ntlmssp,noperm,rw
