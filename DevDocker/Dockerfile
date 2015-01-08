@@ -4,8 +4,8 @@ MAINTAINER David Arnold (DevCO) <dar@devco.co>
 WORKDIR /tmp
 
 
-ADD requirements.txt
-ADD pycharm-debug-py3k.egg
+ADD requirements.txt ./requirements.txt
+ADD pycharm-debug-py3k.egg ./pycharm-debug.egg
 
 RUN \
 # Install python dependencies
@@ -22,7 +22,7 @@ RUN \
 
 RUN \
 # We install the pycharm egg for remote debugging (Debug-Server)
-     easy_install /tmp/pycharm-debug-py3k.egg \
+     easy_install /tmp/pycharm-debug.egg \
 
 # We cleanup the tmp-dir
   && rm -r /tmp/*
