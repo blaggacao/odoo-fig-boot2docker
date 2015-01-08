@@ -4,8 +4,8 @@ MAINTAINER David Arnold (DevCO) <dar@devco.co>
 WORKDIR /tmp
 
 
-ADD requirements.txt ./requirements.txt
-ADD pycharm-debug-py3k.egg ./pycharm-debug.egg
+ADD requirements.txt /tmp/requirements.txt
+ADD pycharm-debug-py3k.egg /tmp/pycharm-debug.egg
 
 RUN \
 # Install python dependencies
@@ -27,5 +27,9 @@ RUN \
 # We cleanup the tmp-dir
   && rm -r /tmp/*
 
+# Expose Odoo's Standard Port
+EXPOSE 8069
+# Expose Odoo's Extra Port (What is it actually for?)
+EXPOSE 8072
+
 ENTRYPOINT ["python2"]
-EXPOSE 8069 8072
