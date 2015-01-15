@@ -16,7 +16,7 @@ RUN \
     --pre \
     # Use wheels from xcgd people in order to get always the right version in wheel.
     --find-links=https://wheelhouse.openerp-experts.net/trusty/odoo/ \
-    # make .pyc out of .py
+    # make .pyc out of .py - don't know if it's done by the wheels already
     --compile \
     --requirement requirements.txt
 
@@ -25,7 +25,6 @@ RUN \
     apt-get update \
     && apt-get --fix-broken install \
     && apt-get --quiet --assume-yes install xfonts-base xfonts-75dpi \
-    && apt-get --quiet --assume-yes autoremove \
 # Install newest version of wkhtmltopdf
     && wget http://sourceforge.net/projects/wkhtmltopdf/files/0.12.2/wkhtmltox-0.12.2_linux-wheezy-amd64.deb \
     && dpkg -i /tmp/wkhtmltox-0.12.2_linux-wheezy-amd64.deb
@@ -40,7 +39,8 @@ RUN \
 
 RUN \
 # We install cifs-utils in order to access a shared folder on windows (samba)
-    apt-get update && apt-get install cifs-utils && apt-get autoremove
+    apt-get --quiet --assume-yes install cifs-utils
+    && apt-get --quiet --assume-yes autoremove
 
 # We cleanup the tmp-dir
     && rm -r /tmp/*
