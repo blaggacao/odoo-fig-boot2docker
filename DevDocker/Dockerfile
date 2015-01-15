@@ -3,7 +3,6 @@ MAINTAINER David Arnold (DevCO) <dar@devco.co>
 
 WORKDIR /tmp
 
-
 ADD requirements.txt /tmp/requirements.txt
 ADD pycharm-debug-py3k.egg /tmp/pycharm-debug.egg
 
@@ -34,15 +33,14 @@ RUN \
     && adduser --system --uid=1000 --gid=1000 --home /home/odoo --shell /bin/bash odoo
 
 RUN \
-# We install the pycharm egg for remote debugging (Debug-Server)
+# pycharm debug server is installed from egg
     easy_install /tmp/pycharm-debug.egg
 
 RUN \
-# We install cifs-utils in order to access a shared folder on windows (samba)
-    apt-get --quiet --assume-yes install cifs-utils
-    && apt-get --quiet --assume-yes autoremove
-
-# We cleanup the tmp-dir
+# cifs (samba) is installed in order to mount shared windows folders.
+    apt-get --quiet --assume-yes install cifs-utils \
+    && apt-get --quiet --assume-yes autoremove \
+# /tmp is cleaned.
     && rm -r /tmp/*
 
 # Expose Odoo's Standard Port
