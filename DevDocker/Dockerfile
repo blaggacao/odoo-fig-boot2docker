@@ -21,9 +21,10 @@ RUN \
     --requirement requirements.txt
 
 RUN \
+    apt-get update && apt-get -f install xfonts-base xfonts-75dpi && apt-get autoremove
 # Install newest version of wkhtmltopdf
-     wget http://downloads.sourceforge.net/project/wkhtmltopdf/0.12.1/wkhtmltox-0.12.1_linux-trusty-amd64.deb \
-  && dpkg -i /tmp/wkhtmltox-0.12.1_linux-trusty-amd64.deb
+    wget http://sourceforge.net/projects/wkhtmltopdf/files/0.12.2/wkhtmltox-0.12.2_linux-wheezy-amd64.deb \
+  && dpkg -i /tmp/wkhtmltox-0.12.2_linux-wheezy-amd64.deb
 
 # We set the odoo user and group fixed for compatibility with connectors and hosts - in case we need it.
   && addgroup --gid=1000 odoo \
@@ -31,11 +32,11 @@ RUN \
 
 RUN \
 # We install the pycharm egg for remote debugging (Debug-Server)
-     easy_install /tmp/pycharm-debug.egg
+    easy_install /tmp/pycharm-debug.egg
 
 RUN \
 # We install cifs-utils in order to access a shared folder on windows (samba)
-     apt-get update && apt-get install cifs-utils && apt-get autoremove
+    apt-get update && apt-get install cifs-utils && apt-get autoremove
 
 # We cleanup the tmp-dir
   && rm -r /tmp/*
