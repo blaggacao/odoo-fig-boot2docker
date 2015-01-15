@@ -16,7 +16,8 @@ RUN \
     --pre \
     # Use wheels from xcgd people in order to get always the right version in wheel.
     --find-links=https://wheelhouse.openerp-experts.net/trusty/odoo/ \
-    --compile \ # make .pyc out of .py
+    # make .pyc out of .py
+    --compile \
     --requirement /tmp/requirements.txt
 
 RUN \
