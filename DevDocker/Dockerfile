@@ -18,7 +18,7 @@ RUN \
     --find-links=https://wheelhouse.openerp-experts.net/trusty/odoo/ \
     # make .pyc out of .py
     --compile \
-    --requirement /tmp/requirements.txt
+    --requirement requirements.txt
 
 RUN \
 # Install newest version of wkhtmltopdf
