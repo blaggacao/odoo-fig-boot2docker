@@ -21,14 +21,18 @@ RUN \
     --requirement requirements.txt
 
 RUN \
-    apt-get update && apt-get -f install xfonts-base xfonts-75dpi && apt-get autoremove
+# Some dependencies to wkhtmltopdf
+    apt-get update \
+    && apt-get --fix-broken install \
+    && apt-get --quiet --assume-yes install xfonts-base xfonts-75dpi \
+    && apt-get autoremove \
 # Install newest version of wkhtmltopdf
-    wget http://sourceforge.net/projects/wkhtmltopdf/files/0.12.2/wkhtmltox-0.12.2_linux-wheezy-amd64.deb \
-  && dpkg -i /tmp/wkhtmltox-0.12.2_linux-wheezy-amd64.deb
+    && wget http://sourceforge.net/projects/wkhtmltopdf/files/0.12.2/wkhtmltox-0.12.2_linux-wheezy-amd64.deb \
+    && dpkg -i /tmp/wkhtmltox-0.12.2_linux-wheezy-amd64.deb
 
 # We set the odoo user and group fixed for compatibility with connectors and hosts - in case we need it.
-  && addgroup --gid=1000 odoo \
-  && adduser --system --uid=1000 --gid=1000 --home /home/odoo --shell /bin/bash odoo
+    && addgroup --gid=1000 odoo \
+    && adduser --system --uid=1000 --gid=1000 --home /home/odoo --shell /bin/bash odoo
 
 RUN \
 # We install the pycharm egg for remote debugging (Debug-Server)
@@ -39,7 +43,7 @@ RUN \
     apt-get update && apt-get install cifs-utils && apt-get autoremove
 
 # We cleanup the tmp-dir
-  && rm -r /tmp/*
+    && rm -r /tmp/*
 
 # Expose Odoo's Standard Port
 EXPOSE 8069
