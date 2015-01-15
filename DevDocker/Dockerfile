@@ -25,7 +25,7 @@ RUN \
     apt-get update \
     && apt-get --fix-broken install \
     && apt-get --quiet --assume-yes install xfonts-base xfonts-75dpi \
-    && apt-get autoremove \
+    && apt-get --quiet --assume-yes autoremove \
 # Install newest version of wkhtmltopdf
     && wget http://sourceforge.net/projects/wkhtmltopdf/files/0.12.2/wkhtmltox-0.12.2_linux-wheezy-amd64.deb \
     && dpkg -i /tmp/wkhtmltox-0.12.2_linux-wheezy-amd64.deb
